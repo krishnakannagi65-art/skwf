@@ -11,6 +11,7 @@ import type { Route } from "./+types/root";
 import "./app.css";
 
 export const links: Route.LinksFunction = () => [
+  { rel: "icon", href: "/favicon.svg" },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",
@@ -19,9 +20,60 @@ export const links: Route.LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600&display=swap",
   },
 ];
+
+// TODO: get the phone no from constants file and use it in meta description
+// TODO: add favicon and og:image to public folder
+export function meta({}: Route.MetaArgs) {
+  return [
+    {
+      title:
+        "Sri Krishna Wooden Furniture — Premium Handcrafted Furniture | Dharmapuri",
+    },
+    {
+      name: "description",
+      content:
+        "Premium handcrafted teak, rosewood & custom furniture. Sofas, beds, dining sets, wardrobes, pooja temples & more. Call Manogaran: 8838233612",
+    },
+    {
+      name: "keywords",
+      content:
+        "wooden furniture Dharmapuri, teak furniture Dharmapuri, rosewood furniture, custom furniture Dharmapuri, furniture shop Dharmapuri, Sri Krishna Wooden Furniture",
+    },
+    {
+      name: "og:title",
+      content:
+        "Sri Krishna Wooden Furniture — Premium Handcrafted Furniture | Dharmapuri",
+    },
+    {
+      name: "og:description",
+      content:
+        "Premium handcrafted teak, rosewood & custom wooden furniture in Dharmapuri. Custom furniture builder, virtual room designer & wood library.",
+    },
+    {
+      name: "og:type",
+      content: "website",
+    },
+    {
+      name: "og:url",
+      content: "https://srikrishnawoodenfurniture.com/",
+    },
+    {
+      name: "og:image",
+      content: "https://srikrishnawoodenfurniture.com/og_default.png",
+    },
+    {
+      name: "twitter:card",
+      content: "summary_large_image",
+    },
+    {
+      name: "twitter:image",
+      content: "https://srikrishnawoodenfurniture.com/og_default.png",
+    },
+  ];
+}
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
