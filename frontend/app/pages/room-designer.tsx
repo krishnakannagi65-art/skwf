@@ -98,7 +98,7 @@ export function RoomDesignerPage() {
                   setSelectedRoom(r.id);
                   setSelectedCombo([]);
                 }}
-                className={`group relative aspect-[4/3] rounded-2xl overflow-hidden border-2 transition-all ${
+                className={`group relative aspect-4/3 rounded-2xl overflow-hidden border-2 transition-all ${
                   isActive
                     ? "border-gold-500 scale-[1.02] shadow-xl"
                     : "border-transparent hover:scale-[1.01]"
@@ -109,7 +109,7 @@ export function RoomDesignerPage() {
                   alt={r.name[lang]}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-wood-950/90 via-wood-950/30 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-wood-950/90 via-wood-950/30 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-left">
                   <div
                     className={`w-12 h-12 rounded-xl flex items-center justify-center mb-3 transition-all ${isActive ? "bg-gold-500" : "bg-white/20 backdrop-blur-sm"}`}

@@ -84,7 +84,7 @@ export function GalleryPage() {
         <div className="mb-8">
           <div
             ref={containerRef}
-            className="relative aspect-[16/10] rounded-2xl overflow-hidden cursor-ew-resize select-none"
+            className="relative aspect-16/10 rounded-2xl overflow-hidden cursor-ew-resize select-none"
             onMouseDown={(e) => {
               isDragging.current = true;
               handleMove(e.clientX);
@@ -181,7 +181,7 @@ export function GalleryPage() {
                 alt=""
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-wood-950/80 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-wood-950/80 to-transparent" />
               <p className="absolute bottom-2 left-2 right-2 text-xs text-white font-medium text-left">
                 {lang === "ta" && p.title_ta ? p.title_ta : p.title}
               </p>
