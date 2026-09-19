@@ -1,4 +1,4 @@
-import bed_1 from "/products/bed-1.png?url";
+import bed_1 from "/products/bed-1.png";
 import bed_2 from "/products/bed-2.png";
 import bed_3 from "/products/bed-3.png";
 import bed_4 from "/products/bed-4.png";
