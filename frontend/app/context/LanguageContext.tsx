@@ -5,7 +5,7 @@ import {
   useEffect,
   type ReactNode,
 } from "react";
-import type { Language } from "@/types";
+import type { Language } from "~/types/index";
 
 interface LanguageContextValue {
   lang: Language;
