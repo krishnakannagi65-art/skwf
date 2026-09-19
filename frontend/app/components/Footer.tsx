@@ -2,15 +2,9 @@ import { useLanguage } from "~/context/LanguageContext";
 import { t } from "~/i18n/translations";
 import { BUSINESS, telLink, whatsappLink } from "~/lib/constants";
 import { navigate } from "~/lib/router";
-import {
-  Clock,
-  Facebook,
-  Instagram,
-  Mail,
-  MapPin,
-  MessageCircle,
-  Phone,
-} from "lucide-react";
+import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { FacebookIcon } from "~/assets/icons/facebook";
+import { InstagramIcon } from "~/assets/icons/instagram";
 
 export function Footer() {
   const { lang } = useLanguage();
@@ -66,13 +60,13 @@ export function Footer() {
                 href="#"
                 className="flex items-center justify-center w-10 h-10 transition-colors rounded-lg bg-wood-800 hover:bg-wood-700"
               >
-                <Facebook size={18} />
+                <FacebookIcon size={18} />
               </a>
               <a
                 href="#"
                 className="flex items-center justify-center w-10 h-10 transition-colors rounded-lg bg-wood-800 hover:bg-wood-700"
               >
-                <Instagram size={18} />
+                <InstagramIcon size={18} />
               </a>
             </div>
           </div>
@@ -103,10 +97,7 @@ export function Footer() {
             </h4>
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-wood-400">
-                <MapPin
-                  size={18}
-                  className="text-gold-400 shrink-0 mt-0.5"
-                />
+                <MapPin size={18} className="text-gold-400 shrink-0 mt-0.5" />
                 <span>{BUSINESS.addressFull}</span>
               </li>
               <li>
@@ -119,17 +110,11 @@ export function Footer() {
                 </a>
               </li>
               <li className="flex items-start gap-3 text-sm text-wood-400">
-                <Mail
-                  size={18}
-                  className="text-gold-400 shrink-0 mt-0.5"
-                />
+                <Mail size={18} className="text-gold-400 shrink-0 mt-0.5" />
                 <span>{BUSINESS.email}</span>
               </li>
               <li className="flex items-start gap-3 text-sm text-wood-400">
-                <Clock
-                  size={18}
-                  className="text-gold-400 shrink-0 mt-0.5"
-                />
+                <Clock size={18} className="text-gold-400 shrink-0 mt-0.5" />
                 <span>{BUSINESS.hours}</span>
               </li>
             </ul>
