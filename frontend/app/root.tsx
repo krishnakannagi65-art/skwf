@@ -95,9 +95,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function App() {
+export function loader({ request }: Route.LoaderArgs) {
+  const cookie = request.headers.get("Cookie");
+  const lang = cookie?.match(/skwf-lang=(en|ta)/)?.[1] || "en";
+  return { lang: lang as "en" | "ta" };
+}
+
+export default function App({ loaderData }: Route.ComponentProps) {
   return (
-    <LanguageProvider>
+    <LanguageProvider defaultLang={loaderData.lang}>
       <Outlet />
     </LanguageProvider>
   );

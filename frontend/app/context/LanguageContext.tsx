@@ -15,14 +15,17 @@ interface LanguageContextValue {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Language>(() => {
-    const stored = localStorage.getItem("skwf-lang");
-    return stored === "ta" ? "ta" : "en";
-  });
+export function LanguageProvider({
+  children,
+  defaultLang = "en",
+}: {
+  children: ReactNode;
+  defaultLang?: Language;
+}) {
+  const [lang, setLangState] = useState<Language>(defaultLang);
 
   useEffect(() => {
-    localStorage.setItem("skwf-lang", lang);
+    document.cookie = `skwf-lang=${lang}; path=/; max-age=31536000`;
     document.documentElement.lang = lang === "ta" ? "ta" : "en";
     document.body.classList.toggle("font-tamil", lang === "ta");
   }, [lang]);
