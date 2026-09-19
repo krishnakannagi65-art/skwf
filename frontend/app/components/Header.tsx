@@ -135,7 +135,7 @@ export function Header() {
               </button>
               <a
                 href={telLink()}
-                className="hidden md:flex btn-primary !py-2 !px-4 text-sm"
+                className="hidden md:flex btn-primary py-2! px-4! text-sm"
               >
                 <Phone size={16} />
                 Call Now

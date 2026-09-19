@@ -227,7 +227,7 @@ const woodTypes = [
                   {" "}
                   {i < step ? <Check size={18} /> : i + 1}{" "}
                 </div>{" "}
-                <span className="hidden mt-1 text-[10px] text-wood-500 md:block text-center max-w-[80px]">
+                <span className="hidden mt-1 text-[10px] text-wood-500 md:block text-center max-w-20">
                   {" "}
                   {t(
                     s as keyof typeof import("~/i18n/translations").translations,
@@ -403,7 +403,7 @@ const woodTypes = [
                     >
                       {" "}
                       <span
-                        className="flex-shrink-0 w-6 h-6 border rounded-full border-wood-200"
+                        className="shrink-0 w-6 h-6 border rounded-full border-wood-200"
                         style={{ backgroundColor: u.color }}
                       />{" "}
                       <span className="text-xs font-medium text-wood-700">

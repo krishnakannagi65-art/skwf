@@ -29,7 +29,7 @@ export function ContactPage() {
             <div className="space-y-4 mb-8">
               {/* Address */}
               <div className="card p-5 flex items-start gap-4">
-                <div className="w-12 h-12 bg-wood-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-wood-100 rounded-xl flex items-center justify-center shrink-0">
                   <MapPin size={22} className="text-wood-600" />
                 </div>
                 <div>
@@ -47,7 +47,7 @@ export function ContactPage() {
                 href={telLink()}
                 className="card card-hover p-5 flex items-start gap-4"
               >
-                <div className="w-12 h-12 bg-wood-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-wood-100 rounded-xl flex items-center justify-center shrink-0">
                   <Phone size={22} className="text-wood-600" />
                 </div>
                 <div>
@@ -65,7 +65,7 @@ export function ContactPage() {
 
               {/* Email */}
               <div className="card p-5 flex items-start gap-4">
-                <div className="w-12 h-12 bg-wood-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-wood-100 rounded-xl flex items-center justify-center shrink-0">
                   <Mail size={22} className="text-wood-600" />
                 </div>
                 <div>
@@ -78,7 +78,7 @@ export function ContactPage() {
 
               {/* Hours */}
               <div className="card p-5 flex items-start gap-4">
-                <div className="w-12 h-12 bg-wood-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-wood-100 rounded-xl flex items-center justify-center shrink-0">
                   <Clock size={22} className="text-wood-600" />
                 </div>
                 <div>

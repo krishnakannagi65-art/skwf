@@ -61,7 +61,7 @@ export function WoodLibraryPage() {
                   <div
                     className={`relative ${idx % 2 === 1 ? "lg:[direction:ltr]" : ""}`}
                   >
-                    <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
+                    <div className="aspect-4/3 rounded-2xl overflow-hidden shadow-lg">
                       <img
                         src={wood.image_url}
                         alt={name}

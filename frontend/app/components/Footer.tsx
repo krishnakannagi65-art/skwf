@@ -105,7 +105,7 @@ export function Footer() {
               <li className="flex items-start gap-3 text-sm text-wood-400">
                 <MapPin
                   size={18}
-                  className="text-gold-400 flex-shrink-0 mt-0.5"
+                  className="text-gold-400 shrink-0 mt-0.5"
                 />
                 <span>{BUSINESS.addressFull}</span>
               </li>
@@ -114,21 +114,21 @@ export function Footer() {
                   href={telLink()}
                   className="flex items-center gap-3 text-sm transition-colors text-wood-400 hover:text-gold-400"
                 >
-                  <Phone size={18} className="flex-shrink-0 text-gold-400" />
+                  <Phone size={18} className="shrink-0 text-gold-400" />
                   {BUSINESS.phoneDisplay}
                 </a>
               </li>
               <li className="flex items-start gap-3 text-sm text-wood-400">
                 <Mail
                   size={18}
-                  className="text-gold-400 flex-shrink-0 mt-0.5"
+                  className="text-gold-400 shrink-0 mt-0.5"
                 />
                 <span>{BUSINESS.email}</span>
               </li>
               <li className="flex items-start gap-3 text-sm text-wood-400">
                 <Clock
                   size={18}
-                  className="text-gold-400 flex-shrink-0 mt-0.5"
+                  className="text-gold-400 shrink-0 mt-0.5"
                 />
                 <span>{BUSINESS.hours}</span>
               </li>

@@ -19,7 +19,7 @@ export function WhatsAppFloat() {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
       {showLabel && !dismissed && (
-        <div className="glass shadow-lg rounded-2xl px-4 py-3 max-w-[220px] animate-slide-in-right relative">
+        <div className="glass shadow-lg rounded-2xl px-4 py-3 max-w-55 animate-slide-in-right relative">
           <button
             onClick={() => setDismissed(true)}
             className="absolute -top-2 -left-2 w-6 h-6 bg-wood-700 text-white rounded-full flex items-center justify-center hover:bg-wood-800 transition-colors"

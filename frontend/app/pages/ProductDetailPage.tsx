@@ -137,7 +137,7 @@ Could you provide more details?`;
                     type="button"
                     key={`${image}-${index}`}
                     onClick={() => setActiveImage(index)}
-                    className={`w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden border-2 transition-all ${
+                    className={`w-20 h-20 shrink-0 rounded-lg overflow-hidden border-2 transition-all ${
                       activeImage === index
                         ? "border-wood-700 scale-105"
                         : "border-transparent opacity-60 hover:opacity-100"

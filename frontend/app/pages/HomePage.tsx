@@ -19,7 +19,7 @@ import {
   Ruler,
   Sparkles,
 } from "lucide-react";
-import shopImage from "../../public/shop.jpeg";
+import shopImage from "/shop.jpeg";
 
 const experienceCards = [
   {
@@ -68,7 +68,7 @@ export function HomePage() {
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img src={shopImage} alt="" className="object-cover w-full h-full" />
-          <div className="absolute inset-0 bg-gradient-to-r from-wood-950/90 via-wood-950/70 to-wood-900/40" />
+          <div className="absolute inset-0 bg-linear-to-r from-wood-950/90 via-wood-950/70 to-wood-900/40" />
         </div>
 
         <div className="relative z-10 px-6 py-20 mx-auto max-w-7xl">
@@ -111,7 +111,7 @@ export function HomePage() {
               </button>
               <button
                 onClick={() => navigate("/custom-builder")}
-                className="btn-secondary !bg-white/10 !border-white/30 !text-white hover:!bg-white/20"
+                className="btn-secondary bg-white/10! border-white/30! text-white! hover:bg-white/20!"
               >
                 {t("hero_cta2", lang)}
               </button>
@@ -291,7 +291,7 @@ export function HomePage() {
                     alt={wood.name}
                     className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-wood-950/90 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-wood-950/90 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 text-left">
                     <h3 className="font-serif text-sm font-semibold text-white">
                       {lang === "ta" && wood.name_ta ? wood.name_ta : wood.name}
@@ -323,7 +323,7 @@ export function HomePage() {
               alt="Workshop"
               className="shadow-xl rounded-2xl"
             />
-            <div className="absolute flex flex-col justify-center hidden w-48 h-48 p-6 text-white -bottom-6 -right-6 bg-wood-900 rounded-2xl md:flex">
+            <div className="absolute flex-col justify-center hidden w-48 h-48 p-6 text-white -bottom-6 -right-6 bg-wood-900 rounded-2xl md:flex">
               <p className="font-serif text-3xl font-bold text-gold-400">20+</p>
               <p className="mt-1 text-sm text-wood-300">
                 {t("stat_years", lang)}
@@ -404,7 +404,7 @@ export function HomePage() {
             </a>
             <a
               href={telLink()}
-              className="btn-secondary !bg-white/10 !border-white/30 !text-white hover:!bg-white/20"
+              className="btn-secondary bg-white/10! border-white/30! text-white! hover:bg-white/20!"
             >
               <Phone size={18} /> {BUSINESS.phoneDisplay}
             </a>

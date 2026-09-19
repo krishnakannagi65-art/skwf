@@ -33,7 +33,7 @@ export function ProductCard({ product, woodType, imageUrl }: ProductCardProps) {
       className="flex flex-col text-left card card-hover group"
     >
       {/* Image */}
-      <div className="relative aspect-[4/3] overflow-hidden bg-wood-100">
+      <div className="relative aspect-4/3 overflow-hidden bg-wood-100">
         <img
           src={imageUrl || product.image_url}
           alt={name}
@@ -93,7 +93,7 @@ export function ProductCard({ product, woodType, imageUrl }: ProductCardProps) {
 export function ProductCardSkeleton() {
   return (
     <div className="card animate-pulse">
-      <div className="aspect-[4/3] bg-wood-200" />
+      <div className="aspect-4/3 bg-wood-200" />
       <div className="p-4">
         <div className="w-1/3 h-3 mb-2 rounded bg-wood-200" />
         <div className="w-3/4 h-5 mb-3 rounded bg-wood-200" />

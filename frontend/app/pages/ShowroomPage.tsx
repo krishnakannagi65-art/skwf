@@ -109,7 +109,7 @@ export function ShowroomPage() {
           <aside
             className={`${
               showFilters ? "block" : "hidden"
-            } lg:block w-full lg:w-64 flex-shrink-0 space-y-6`}
+            } lg:block w-full lg:w-64 shrink-0 space-y-6`}
           >
             <div className="p-5 card">
               {/* Filter Header */}

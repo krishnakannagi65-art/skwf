@@ -5,10 +5,10 @@ import { t } from "~/i18n/translations";
 import { BUSINESS } from "~/lib/constants";
 import { navigate } from "~/lib/router";
 import { ArrowRight, Award, Hammer, Heart, TreeDeciduous } from "lucide-react";
-import ownerimage from "../../public/owner.jpeg";
-import owner2image from "../../public/owner2.jpeg";
-import owner3image from "../../public/owner3.jpeg";
-import shopImage from "../../public/shop.jpeg";
+import ownerimage from "/owner.jpeg";
+import owner2image from "/owner2.jpeg";
+import owner3image from "/owner3.jpeg";
+import shopImage from "/shop.jpeg";
 
 export function AboutPage() {
   const { lang } = useLanguage();
@@ -103,7 +103,7 @@ export function AboutPage() {
 
           {/* First Owner Image - RIGHT */}
           <div className="relative">
-            <div className="w-full max-w-sm mx-auto h-[380px] md:h-[420px] overflow-hidden shadow-lg rounded-2xl">
+            <div className="w-full max-w-sm mx-auto h-95 md:h-105 overflow-hidden shadow-lg rounded-2xl">
               <img
                 src={ownerimage}
                 alt={BUSINESS.owner}
@@ -111,7 +111,7 @@ export function AboutPage() {
               />
             </div>
 
-            <div className="absolute bottom-[-15px] right-0 md:right-[-10px] bg-wood-900 text-white rounded-xl p-4 shadow-lg">
+            <div className="absolute -bottom-3.75 right-0 md:-right-2.5 bg-wood-900 text-white rounded-xl p-4 shadow-lg">
               <p className="font-serif text-lg font-semibold text-gold-400">
                 {BUSINESS.owner}
               </p>
@@ -130,7 +130,7 @@ export function AboutPage() {
         <div className="grid items-center grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
           {/* Second Owner Image - LEFT */}
           <div className="relative order-2 md:order-1">
-            <div className="w-full max-w-sm mx-auto h-[380px] md:h-[420px] overflow-hidden shadow-lg rounded-2xl">
+            <div className="w-full max-w-sm mx-auto h-95 md:h-105 overflow-hidden shadow-lg rounded-2xl">
               <img
                 src={owner2image}
                 alt="K. Chitty Babu"
@@ -138,7 +138,7 @@ export function AboutPage() {
               />
             </div>
 
-            <div className="absolute bottom-[-15px] left-0 md:left-[-10px] bg-wood-900 text-white rounded-xl p-4 shadow-lg">
+            <div className="absolute -bottom-3.75 left-0 md:-left-2.5 bg-wood-900 text-white rounded-xl p-4 shadow-lg">
               <p className="font-serif text-lg font-semibold text-gold-400">
                 K. Chitty Babu
               </p>
@@ -232,7 +232,7 @@ export function AboutPage() {
           {/* Third Owner Image - RIGHT */}{" "}
           <div className="relative">
             {" "}
-            <div className="w-full max-w-sm mx-auto h-[380px] md:h-[420px] overflow-hidden shadow-lg rounded-2xl">
+            <div className="w-full max-w-sm mx-auto h-95 md:h-105 overflow-hidden shadow-lg rounded-2xl">
               {" "}
               <img
                 src={owner3image}
@@ -240,7 +240,7 @@ export function AboutPage() {
                 className="object-contain w-full h-full"
               />{" "}
             </div>{" "}
-            <div className="absolute bottom-[-15px] right-0 md:right-[-10px] bg-wood-900 text-white rounded-xl p-4 shadow-lg">
+            <div className="absolute -bottom-3.75 right-0 md:-right-2.5 bg-wood-900 text-white rounded-xl p-4 shadow-lg">
               {" "}
               <p className="font-serif text-lg font-semibold text-gold-400">
                 {" "}
