@@ -1,0 +1,14 @@
+node_modules/
+
+pb_data/
+pb_logs/
+
+!pg_migrations/
+
+# Ignore binary files
+pocketbase
+pocketbase.exe
+
+# Ignore pocketbase extracted files
+CHANGELOG.md
+LICENSE.md

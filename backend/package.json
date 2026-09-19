@@ -1,0 +1,16 @@
+{
+  "name": "skwf-backend",
+  "version": "1.0.0",
+  "description": "Backend service for the SKFW frontend",
+  "license": "ISC",
+  "private": true,
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "start": "pocketbase serve --dir ./pb_data --migrationsDir ./pg_migrations --publicDir ../frontend/build/client --http 0.0.0.0:8080",
+    "dev": "pocketbase serve --dir ./pb_data --migrationsDir ./pg_migrations --http 0.0.0.0:8080"
+  },
+  "dependencies": {
+    "@fadlee/pocketbase-bin": "1.0.0"
+  }
+}
