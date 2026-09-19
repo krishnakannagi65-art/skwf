@@ -1,7 +1,7 @@
-import { useLanguage } from "@/context/LanguageContext";
-import { t } from "@/i18n/translations";
-import { BUSINESS, whatsappLink } from "@/lib/constants";
-import { submitEnquiry } from "@/lib/enquiries";
+import { useLanguage } from "~/context/LanguageContext";
+import { t } from "~/i18n/translations";
+import { BUSINESS, whatsappLink } from "~/lib/constants";
+import { submitEnquiry } from "~/lib/enquiries";
 import { ArrowLeft, ArrowRight, Check, Hammer, Send } from "lucide-react";
 import { useState } from "react"; /* ========================================================= WOOD TYPES ========================================================= */
 const woodTypes = [
@@ -230,7 +230,7 @@ const woodTypes = [
                 <span className="hidden mt-1 text-[10px] text-wood-500 md:block text-center max-w-[80px]">
                   {" "}
                   {t(
-                    s as keyof typeof import("@/i18n/translations").translations,
+                    s as keyof typeof import("~/i18n/translations").translations,
                     lang,
                   )}{" "}
                 </span>{" "}

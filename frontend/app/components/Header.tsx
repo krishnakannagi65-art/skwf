@@ -1,14 +1,14 @@
-import { useLanguage } from "@/context/LanguageContext";
-import { t } from "@/i18n/translations";
-import { BUSINESS, telLink } from "@/lib/constants";
-import { navigate, useRoute } from "@/lib/router";
-import type { Route } from "@/types";
+import { useLanguage } from "~/context/LanguageContext";
+import { t } from "~/i18n/translations";
+import { BUSINESS, telLink } from "~/lib/constants";
+import { navigate, useRoute } from "~/lib/router";
+import type { Route } from "~/types";
 import { Globe, Menu, Phone, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const navItems: {
   route: Route;
-  key: keyof typeof import("@/i18n/translations").translations;
+  key: keyof typeof import("~/i18n/translations").translations;
 }[] = [
   { route: { name: "home" }, key: "nav_home" },
   { route: { name: "showroom" }, key: "nav_showroom" },

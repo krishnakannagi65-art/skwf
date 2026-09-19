@@ -1,4 +1,4 @@
-import type { Route } from "@/types";
+import type { Route } from "~/types";
 import { useEffect, useState } from "react";
 
 export function parseHash(): Route {

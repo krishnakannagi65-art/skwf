@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import { MessageCircle, X } from 'lucide-react';
-import { BUSINESS, whatsappLink } from '@/lib/constants';
-import { useLanguage } from '@/context/LanguageContext';
-import { t } from '@/i18n/translations';
+import { useEffect, useState } from "react";
+import { MessageCircle, X } from "lucide-react";
+import { BUSINESS, whatsappLink } from "~/lib/constants";
+import { useLanguage } from "~/context/LanguageContext";
+import { t } from "~/i18n/translations";
 
 export function WhatsAppFloat() {
   const { lang } = useLanguage();
@@ -27,10 +27,14 @@ export function WhatsAppFloat() {
             <X size={14} />
           </button>
           <p className="text-sm font-medium text-wood-800">
-            {lang === 'ta' ? 'வணக்கம்! எப்படி உதவ வல்லேன்?' : 'Hello! How can we help you?'}
+            {lang === "ta"
+              ? "வணக்கம்! எப்படி உதவ வல்லேன்?"
+              : "Hello! How can we help you?"}
           </p>
           <p className="text-xs text-wood-500 mt-1">
-            {lang === 'ta' ? 'மனோகரனுடன் உரையாடுங்கள்' : `Chat with ${BUSINESS.owner}`}
+            {lang === "ta"
+              ? "மனோகரனுடன் உரையாடுங்கள்"
+              : `Chat with ${BUSINESS.owner}`}
           </p>
         </div>
       )}
@@ -39,7 +43,7 @@ export function WhatsAppFloat() {
         target="_blank"
         rel="noopener noreferrer"
         className="w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg shadow-[#25D366]/30 hover:scale-110 active:scale-95 transition-all duration-300 animate-float"
-        aria-label={t('whatsapp_us', lang)}
+        aria-label={t("whatsapp_us", lang)}
       >
         <MessageCircle size={28} className="text-white" fill="white" />
       </a>

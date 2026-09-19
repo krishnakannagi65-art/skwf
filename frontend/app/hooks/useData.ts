@@ -1,11 +1,11 @@
-import bedProducts from "@/data/bed-data";
+import bedProducts from "~/data/bed-data";
 import type {
   Category,
   Product,
   Project,
   Testimonial,
   WoodType,
-} from "@/types";
+} from "~/types";
 
 export function useCategories() {
   return { categories: [] as Category[], loading: false };

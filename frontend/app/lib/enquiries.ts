@@ -1,4 +1,4 @@
-import type { Enquiry } from "@/types";
+import type { Enquiry } from "~/types";
 
 const STORAGE_KEY = "skwf-enquiries";
 

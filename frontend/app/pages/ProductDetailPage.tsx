@@ -2,13 +2,13 @@ import { useState } from "react";
 
 import { ArrowLeft, Check, MessageCircle, Phone, Ruler } from "lucide-react";
 
-import { EnquiryForm } from "@/components/EnquiryForm";
-import { ProductCard } from "@/components/ProductCard";
-import { useLanguage } from "@/context/LanguageContext";
-import bedProducts from "@/data/bed-data";
-import { t } from "@/i18n/translations";
-import { BUSINESS, telLink, whatsappLink } from "@/lib/constants";
-import { navigate } from "@/lib/router";
+import { EnquiryForm } from "~/components/EnquiryForm";
+import { ProductCard } from "~/components/ProductCard";
+import { useLanguage } from "~/context/LanguageContext";
+import bedProducts from "~/data/bed-data";
+import { t } from "~/i18n/translations";
+import { BUSINESS, telLink, whatsappLink } from "~/lib/constants";
+import { navigate } from "~/lib/router";
 
 interface ProductDetailPageProps {
   slug: string;

@@ -1,16 +1,16 @@
-import { ProductCard, RatingStars } from "@/components/ProductCard";
-import { SectionHeader } from "@/components/SectionHeader";
-import { useLanguage } from "@/context/LanguageContext";
-import bedProducts from "@/data/bed-data";
+import { ProductCard, RatingStars } from "~/components/ProductCard";
+import { SectionHeader } from "~/components/SectionHeader";
+import { useLanguage } from "~/context/LanguageContext";
+import bedProducts from "~/data/bed-data";
 import {
   useCategories,
   useProducts,
   useTestimonials,
   useWoodTypes,
-} from "@/hooks/useData";
-import { t } from "@/i18n/translations";
-import { BUSINESS, telLink, whatsappLink } from "@/lib/constants";
-import { navigate } from "@/lib/router";
+} from "~/hooks/useData";
+import { t } from "~/i18n/translations";
+import { BUSINESS, telLink, whatsappLink } from "~/lib/constants";
+import { navigate } from "~/lib/router";
 import {
   ArrowRight,
   Hammer,

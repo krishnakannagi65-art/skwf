@@ -1,9 +1,9 @@
-import { RatingStars } from "@/components/ProductCard";
-import { useLanguage } from "@/context/LanguageContext";
-import { useTestimonials } from "@/hooks/useData";
-import { t } from "@/i18n/translations";
-import { BUSINESS } from "@/lib/constants";
-import { navigate } from "@/lib/router";
+import { RatingStars } from "~/components/ProductCard";
+import { useLanguage } from "~/context/LanguageContext";
+import { useTestimonials } from "~/hooks/useData";
+import { t } from "~/i18n/translations";
+import { BUSINESS } from "~/lib/constants";
+import { navigate } from "~/lib/router";
 import { ArrowRight, Award, Hammer, Heart, TreeDeciduous } from "lucide-react";
 import ownerimage from "../../public/owner.jpeg";
 import owner2image from "../../public/owner2.jpeg";

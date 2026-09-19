@@ -1,6 +1,6 @@
-import { useLanguage } from "@/context/LanguageContext";
-import { navigate } from "@/lib/router";
-import type { Product, WoodType } from "@/types";
+import { useLanguage } from "~/context/LanguageContext";
+import { navigate } from "~/lib/router";
+import type { Product, WoodType } from "~/types";
 import { Star } from "lucide-react";
 
 interface ProductCardProps {

@@ -1,7 +1,7 @@
-import { useLanguage } from "@/context/LanguageContext";
-import { t } from "@/i18n/translations";
-import { BUSINESS, telLink, whatsappLink } from "@/lib/constants";
-import { navigate } from "@/lib/router";
+import { useLanguage } from "~/context/LanguageContext";
+import { t } from "~/i18n/translations";
+import { BUSINESS, telLink, whatsappLink } from "~/lib/constants";
+import { navigate } from "~/lib/router";
 import {
   Clock,
   Facebook,
