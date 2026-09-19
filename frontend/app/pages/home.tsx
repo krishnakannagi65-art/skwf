@@ -10,7 +10,6 @@ import {
 } from "~/hooks/useData";
 import { t } from "~/i18n/translations";
 import { BUSINESS, telLink, whatsappLink } from "~/lib/constants";
-import { navigate } from "~/lib/router";
 import {
   ArrowRight,
   Hammer,
@@ -20,6 +19,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import shopImage from "/shop.jpeg";
+import { useNavigate } from "react-router";
 
 const experienceCards = [
   {
@@ -51,6 +51,7 @@ export function HomePage() {
   const { categories } = useCategories();
   const { woodTypes } = useWoodTypes();
   const { testimonials } = useTestimonials();
+  const navigate = useNavigate();
 
   const iconMap: Record<string, typeof Hammer> = {
     Sofa: Hammer,

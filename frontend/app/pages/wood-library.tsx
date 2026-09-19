@@ -2,8 +2,7 @@ import { TreeDeciduous } from "lucide-react";
 import { useLanguage } from "~/context/LanguageContext";
 import { t } from "~/i18n/translations";
 import { useWoodTypes } from "~/hooks/useData";
-import { SectionHeader } from "~/components/SectionHeader";
-import { navigate } from "~/lib/router";
+import { useNavigate } from "react-router";
 
 const tierColors: Record<string, string> = {
   premium: "bg-gold-100 text-gold-800",
@@ -12,6 +11,7 @@ const tierColors: Record<string, string> = {
 };
 
 export function WoodLibraryPage() {
+  const navigate = useNavigate();
   const { lang } = useLanguage();
   const { woodTypes, loading } = useWoodTypes();
 

@@ -1,13 +1,14 @@
 import { useLanguage } from "~/context/LanguageContext";
 import { t } from "~/i18n/translations";
 import { BUSINESS, telLink, whatsappLink } from "~/lib/constants";
-import { navigate } from "~/lib/router";
 import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { FacebookIcon } from "~/assets/icons/facebook";
 import { InstagramIcon } from "~/assets/icons/instagram";
+import { useNavigate } from "react-router";
 
 export function Footer() {
   const { lang } = useLanguage();
+  const navigate = useNavigate();
 
   const quickLinks = [
     { label: t("nav_showroom", lang), path: "/showroom" },

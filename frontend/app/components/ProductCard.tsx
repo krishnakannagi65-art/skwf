@@ -1,7 +1,8 @@
 import { useLanguage } from "~/context/LanguageContext";
-import { navigate } from "~/lib/router";
-import type { Product, WoodType } from "~/types";
 import { Star } from "lucide-react";
+
+import type { Product, WoodType } from "~/types";
+import { useNavigate } from "react-router";
 
 interface ProductCardProps {
   product: Product;
@@ -10,6 +11,7 @@ interface ProductCardProps {
 }
 export function ProductCard({ product, woodType, imageUrl }: ProductCardProps) {
   const { lang } = useLanguage();
+  const navigate = useNavigate();
 
   const name =
     lang === "ta" && product.name_ta ? product.name_ta : product.name;

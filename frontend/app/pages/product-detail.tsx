@@ -8,7 +8,7 @@ import { useLanguage } from "~/context/LanguageContext";
 import bedProducts from "~/data/bed-data";
 import { t } from "~/i18n/translations";
 import { BUSINESS, telLink, whatsappLink } from "~/lib/constants";
-import { navigate } from "~/lib/router";
+import { useNavigate } from "react-router";
 
 interface ProductDetailPageProps {
   slug: string;
@@ -16,6 +16,7 @@ interface ProductDetailPageProps {
 
 export function ProductDetailPage({ slug }: ProductDetailPageProps) {
   const { lang } = useLanguage();
+  const navigate = useNavigate();
 
   const [activeImage, setActiveImage] = useState(0);
   const [showEnquiry, setShowEnquiry] = useState(false);

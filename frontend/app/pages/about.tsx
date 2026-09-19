@@ -3,8 +3,9 @@ import { useLanguage } from "~/context/LanguageContext";
 import { useTestimonials } from "~/hooks/useData";
 import { t } from "~/i18n/translations";
 import { BUSINESS } from "~/lib/constants";
-import { navigate } from "~/lib/router";
 import { ArrowRight, Award, Hammer, Heart, TreeDeciduous } from "lucide-react";
+import { useNavigate } from "react-router";
+
 import ownerimage from "/owner.jpeg";
 import owner2image from "/owner2.jpeg";
 import owner3image from "/owner3.jpeg";
@@ -13,6 +14,7 @@ import shopImage from "/shop.jpeg";
 export function AboutPage() {
   const { lang } = useLanguage();
   const { testimonials } = useTestimonials();
+  const navigate = useNavigate();
 
   const values = [
     {
