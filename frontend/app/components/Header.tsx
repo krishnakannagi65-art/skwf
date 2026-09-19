@@ -1,10 +1,10 @@
 import { useLanguage } from "~/context/LanguageContext";
 import { t } from "~/i18n/translations";
 import { BUSINESS, telLink } from "~/lib/constants";
-import { navigate, useRoute } from "~/lib/router";
 import type { Route } from "~/types";
 import { Globe, Menu, Phone, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router";
 
 const navItems: {
   route: Route;
@@ -22,7 +22,8 @@ const navItems: {
 ];
 
 export function Header() {
-  const route = useRoute();
+  const location = useLocation();
+  const navigate = useNavigate();
   const { lang, toggleLang } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -35,11 +36,12 @@ export function Header() {
 
   useEffect(() => {
     setMenuOpen(false);
-  }, [route]);
+  }, [location]);
 
   const isActive = (item: Route): boolean => {
-    if (item.name === "home" && route.name === "home") return true;
-    if (item.name !== "home" && route.name === item.name) return true;
+    if (item.name === "home" && location.pathname === "/") return true;
+    if (item.name !== "home" && location.pathname === `/${item.name}`)
+      return true;
     return false;
   };
 
