@@ -1,5 +1,5 @@
 import type { Route } from "./+types/home";
-import { CustomBuilderPage } from "~/pages/CustomBuilderPage";
+import { CustomBuilderPage } from "~/pages/custom-builder";
 
 export function meta({}: Route.MetaArgs) {
   return [
