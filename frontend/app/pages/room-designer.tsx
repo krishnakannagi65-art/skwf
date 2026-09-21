@@ -1,16 +1,16 @@
-import { useState } from "react";
 import {
-  Home as HomeIcon,
-  BedDouble,
-  Utensils,
   ArrowRight,
+  BedDouble,
   Check,
+  Home as HomeIcon,
+  Utensils,
 } from "lucide-react";
-import { useLanguage } from "~/context/LanguageContext";
-import { t } from "~/i18n/translations";
-import { useProducts } from "~/hooks/useData";
+import { useState } from "react";
 import { ProductCard } from "~/components/ProductCard";
-import { BUSINESS, whatsappLink } from "~/lib/constants";
+import { useLanguage } from "~/context/LanguageContext";
+import { useProducts } from "~/hooks/useData";
+import { t } from "~/i18n/translations";
+import { BUSINESS, generateWhatsappLink } from "~/lib/constants";
 
 const roomTypes = [
   {
@@ -176,7 +176,7 @@ export function RoomDesignerPage() {
                     </p>
                   </div>
                   <a
-                    href={whatsappLink(buildWhatsAppMessage())}
+                    href={generateWhatsappLink(buildWhatsAppMessage())}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-gold"

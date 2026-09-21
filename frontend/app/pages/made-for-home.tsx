@@ -1,10 +1,10 @@
+import { ArrowRight, Ruler, Sparkles } from "lucide-react";
 import { useState } from "react";
-import { Ruler, Sparkles, ArrowRight, Check } from "lucide-react";
-import { useLanguage } from "~/context/LanguageContext";
-import { t } from "~/i18n/translations";
-import { useProducts } from "~/hooks/useData";
 import { ProductCard } from "~/components/ProductCard";
-import { BUSINESS, whatsappLink } from "~/lib/constants";
+import { useLanguage } from "~/context/LanguageContext";
+import { useProducts } from "~/hooks/useData";
+import { t } from "~/i18n/translations";
+import { BUSINESS, generateWhatsappLink } from "~/lib/constants";
 
 const roomTypes = [
   {
@@ -248,7 +248,7 @@ export function MadeForHomePage() {
                       : "Want these recommendations sent via WhatsApp?"}
                   </p>
                   <a
-                    href={whatsappLink(buildWhatsAppMessage())}
+                    href={generateWhatsappLink(buildWhatsAppMessage())}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-gold"
@@ -263,7 +263,7 @@ export function MadeForHomePage() {
                   {t("no_results", lang)}
                 </p>
                 <a
-                  href={whatsappLink(buildWhatsAppMessage())}
+                  href={generateWhatsappLink(buildWhatsAppMessage())}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary"

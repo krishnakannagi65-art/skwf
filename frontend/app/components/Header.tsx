@@ -1,10 +1,10 @@
-import { useLanguage } from "~/context/LanguageContext";
-import { t } from "~/i18n/translations";
-import { BUSINESS, telLink } from "~/lib/constants";
-import type { Route } from "~/types";
 import { Globe, Menu, Phone, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
+import { useLanguage } from "~/context/LanguageContext";
+import { t } from "~/i18n/translations";
+import { BUSINESS, generateTelLink } from "~/lib/constants";
+import type { Route } from "~/types";
 
 const navItems: {
   route: Route;
@@ -60,16 +60,20 @@ export function Header() {
       <div className="bg-wood-900 text-wood-100 text-xs hidden md:block">
         <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between">
           <span className="font-medium">
-            {BUSINESS.address} • {BUSINESS.hours}
+            {BUSINESS.location.addressShort} • {BUSINESS.hours.display}
           </span>
           <div className="flex items-center gap-4">
-            <a
-              href={telLink()}
-              className="flex items-center gap-1.5 hover:text-gold-400 transition-colors"
-            >
-              <Phone size={12} />
-              {BUSINESS.phoneDisplay}
-            </a>
+            {BUSINESS.contact.displayPhones.map((phone) => (
+              <a
+                key={phone}
+                href={generateTelLink(phone)}
+                className="flex items-center gap-1 hover:text-gold-400 transition-colors"
+              >
+                <Phone size={12} />
+                {phone}
+              </a>
+            ))}
+
             <button
               onClick={toggleLang}
               className="flex items-center gap-1.5 hover:text-gold-400 transition-colors"
@@ -136,7 +140,7 @@ export function Header() {
                 {lang === "en" ? "தமிழ்" : "EN"}
               </button>
               <a
-                href={telLink()}
+                href={generateTelLink(BUSINESS.contact.primaryPhone.display)}
                 className="hidden md:flex btn-primary py-2! px-4! text-sm"
               >
                 <Phone size={16} />
@@ -169,10 +173,16 @@ export function Header() {
                   {t(item.key, lang)}
                 </button>
               ))}
-              <a href={telLink()} className="btn-primary mt-2">
-                <Phone size={16} />
-                {BUSINESS.phoneDisplay}
-              </a>
+              {BUSINESS.contact.displayPhones.map((phone) => (
+                <a
+                  key={phone}
+                  href={generateTelLink(phone)}
+                  className="flex items-center gap-1 hover:text-gold-400 transition-colors"
+                >
+                  <Phone size={12} />
+                  {phone}
+                </a>
+              ))}
             </nav>
           </div>
         )}
