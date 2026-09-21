@@ -1,0 +1,48 @@
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  type ReactNode,
+} from "react";
+import type { Language } from "~/types/index";
+
+interface LanguageContextValue {
+  lang: Language;
+  setLang: (lang: Language) => void;
+  toggleLang: () => void;
+}
+
+const LanguageContext = createContext<LanguageContextValue | null>(null);
+
+export function LanguageProvider({
+  children,
+  defaultLang = "en",
+}: {
+  children: ReactNode;
+  defaultLang?: Language;
+}) {
+  const [lang, setLangState] = useState<Language>(defaultLang);
+
+  useEffect(() => {
+    document.cookie = `skwf-lang=${lang}; path=/; max-age=31536000`;
+    document.documentElement.lang = lang === "ta" ? "ta" : "en";
+    document.body.classList.toggle("font-tamil", lang === "ta");
+  }, [lang]);
+
+  const setLang = (l: Language) => setLangState(l);
+  const toggleLang = () =>
+    setLangState((prev) => (prev === "en" ? "ta" : "en"));
+
+  return (
+    <LanguageContext.Provider value={{ lang, setLang, toggleLang }}>
+      {children}
+    </LanguageContext.Provider>
+  );
+}
+
+export function useLanguage(): LanguageContextValue {
+  const ctx = useContext(LanguageContext);
+  if (!ctx) throw new Error("useLanguage must be used within LanguageProvider");
+  return ctx;
+}
