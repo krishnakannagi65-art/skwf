@@ -1,9 +1,9 @@
+import { AlertCircle, CheckCircle, Loader2, Send } from "lucide-react";
 import { useState } from "react";
-import { Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import { useLanguage } from "~/context/LanguageContext";
 import { t } from "~/i18n/translations";
-import { submitEnquiry } from "~/lib/enquiries";
 import { BUSINESS } from "~/lib/constants";
+import { submitEnquiry } from "~/lib/enquiries";
 
 interface EnquiryFormProps {
   enquiryType?: string;
@@ -152,8 +152,8 @@ export function EnquiryForm({
 
       <p className="text-xs text-wood-400 text-center">
         {lang === "ta"
-          ? `அல்லது ${BUSINESS.owner} ${BUSINESS.phoneDisplay} என்பதில் நேரடியாக அழைக்கவும்`
-          : `Or call ${BUSINESS.owner} directly at ${BUSINESS.phoneDisplay}`}
+          ? `அல்லது ${BUSINESS.owner} ${BUSINESS.contact.displayPhones.join(", ")} என்பதில் நேரடியாக அழைக்கவும்`
+          : `Or call ${BUSINESS.owner} directly at ${BUSINESS.contact.displayPhones.join(", ")}`}
       </p>
     </form>
   );

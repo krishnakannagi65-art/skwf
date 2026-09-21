@@ -1,10 +1,10 @@
+import { ArrowRight, Award, Hammer, Heart, TreeDeciduous } from "lucide-react";
+import { useNavigate } from "react-router";
 import { RatingStars } from "~/components/ProductCard";
 import { useLanguage } from "~/context/LanguageContext";
 import { useTestimonials } from "~/hooks/useData";
 import { t } from "~/i18n/translations";
 import { BUSINESS } from "~/lib/constants";
-import { ArrowRight, Award, Hammer, Heart, TreeDeciduous } from "lucide-react";
-import { useNavigate } from "react-router";
 
 import ownerimage from "/owner.jpeg";
 import owner2image from "/owner2.jpeg";
@@ -73,7 +73,7 @@ export function AboutPage() {
             {t("about_title", lang)}
           </h1>
           <p className="max-w-2xl mx-auto text-lg text-wood-300">
-            {BUSINESS.city} • Est. {BUSINESS.established}
+            {BUSINESS.location.city} • Est. {BUSINESS.established}
           </p>
         </div>
       </section>
@@ -320,7 +320,7 @@ export function AboutPage() {
                 : "He works directly with customers to ensure every piece is perfect for their home."}
             </p>
             <a href={telLink()} className="btn-primary">
-              <Phone size={18} /> {BUSINESS.phoneDisplay}
+              <Phone size={18} /> {BUSINESS.contact.displayPhones.join(", ")}
             </a>
           </div>
         </div>
@@ -364,7 +364,9 @@ export function AboutPage() {
             ? "எங்கள் காட்சி அறையை பார்க்க வாருங்கள்"
             : "Visit Our Showroom"}
         </h2>
-        <p className="mb-8 text-lg text-wood-500">{BUSINESS.addressFull}</p>
+        <p className="mb-8 text-lg text-wood-500">
+          {BUSINESS.location.addressFull}
+        </p>
         <div className="flex flex-col justify-center gap-4 sm:flex-row">
           <button onClick={() => navigate("/showroom")} className="btn-primary">
             {t("nav_showroom", lang)} <ArrowRight size={18} />
