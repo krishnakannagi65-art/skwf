@@ -1,9 +1,9 @@
-import { useLanguage } from "~/context/LanguageContext";
-import { t } from "~/i18n/translations";
-import { BUSINESS, whatsappLink } from "~/lib/constants";
-import { submitEnquiry } from "~/lib/enquiries";
 import { ArrowLeft, ArrowRight, Check, Hammer, Send } from "lucide-react";
 import { useState } from "react"; /* ========================================================= WOOD TYPES ========================================================= */
+import { useLanguage } from "~/context/LanguageContext";
+import { t } from "~/i18n/translations";
+import { BUSINESS, generateWhatsappLink } from "~/lib/constants";
+import { submitEnquiry } from "~/lib/enquiries";
 const woodTypes = [
   { id: "teak", name: { en: "Teak Wood", ta: "தேக்கு மரம்" } },
   { id: "rosewood", name: { en: "Rosewood", ta: "ரோஸ்வுட்" } },
@@ -136,7 +136,7 @@ const woodTypes = [
         details,
       });
       setSent(true);
-      window.open(whatsappLink(buildMessage()), "_blank");
+      window.open(generateWhatsappLink(buildMessage()), "_blank");
     };
   /* ========================================================= SUCCESS SCREEN ========================================================= */ if (
     sent

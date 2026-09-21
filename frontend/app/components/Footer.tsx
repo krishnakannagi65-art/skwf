@@ -1,10 +1,14 @@
-import { useLanguage } from "~/context/LanguageContext";
-import { t } from "~/i18n/translations";
-import { BUSINESS, telLink, whatsappLink } from "~/lib/constants";
-import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { Clock, Mail, MapPin, MessageCircle } from "lucide-react";
+import { useNavigate } from "react-router";
 import { FacebookIcon } from "~/assets/icons/facebook";
 import { InstagramIcon } from "~/assets/icons/instagram";
-import { useNavigate } from "react-router";
+import { useLanguage } from "~/context/LanguageContext";
+import { t } from "~/i18n/translations";
+import {
+  BUSINESS,
+  generateTelLink,
+  generateWhatsappLink,
+} from "~/lib/constants";
 
 export function Footer() {
   const { lang } = useLanguage();
@@ -48,7 +52,7 @@ export function Footer() {
             </p>
             <div className="flex gap-3">
               <a
-                href={whatsappLink(
+                href={generateWhatsappLink(
                   `Hello ${BUSINESS.name}, I would like to know more about your furniture.`,
                 )}
                 target="_blank"
@@ -99,24 +103,26 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-wood-400">
                 <MapPin size={18} className="text-gold-400 shrink-0 mt-0.5" />
-                <span>{BUSINESS.addressFull}</span>
+                <span>{BUSINESS.location.addressFull}</span>
               </li>
               <li>
-                <a
-                  href={telLink()}
-                  className="flex items-center gap-3 text-sm transition-colors text-wood-400 hover:text-gold-400"
-                >
-                  <Phone size={18} className="shrink-0 text-gold-400" />
-                  {BUSINESS.phoneDisplay}
-                </a>
+                {BUSINESS.contact.displayPhones.map((phone) => (
+                  <a
+                    key={phone}
+                    href={generateTelLink(phone)}
+                    className="text-sm text-wood-400 block"
+                  >
+                    {phone}
+                  </a>
+                ))}
               </li>
               <li className="flex items-start gap-3 text-sm text-wood-400">
                 <Mail size={18} className="text-gold-400 shrink-0 mt-0.5" />
-                <span>{BUSINESS.email}</span>
+                <span>{BUSINESS.contact.email}</span>
               </li>
               <li className="flex items-start gap-3 text-sm text-wood-400">
                 <Clock size={18} className="text-gold-400 shrink-0 mt-0.5" />
-                <span>{BUSINESS.hours}</span>
+                <span>{BUSINESS.hours.display}</span>
               </li>
             </ul>
           </div>
@@ -133,7 +139,7 @@ export function Footer() {
             {t("footer_rights", lang)}
           </p>
           <p className="text-xs text-wood-500">
-            {BUSINESS.city} • {BUSINESS.pincode}
+            {BUSINESS.location.city} • {BUSINESS.location.pincode}
           </p>
         </div>
       </div>

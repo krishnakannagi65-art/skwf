@@ -9,8 +9,10 @@ import {
   ScrollRestoration,
 } from "react-router";
 
-import type { Route } from "./+types/root";
 import { LanguageProvider } from "~/context/LanguageContext";
+import { getDefaultMeta } from "./lib/utils";
+
+import type { Route } from "./+types/root";
 
 export const links: Route.LinksFunction = () => [
   { rel: "icon", href: "/favicon.svg" },
@@ -26,55 +28,8 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
-// TODO: get the phone no from constants file and use it in meta description
-// TODO: add favicon and og:image to public folder
 export function meta({}: Route.MetaArgs) {
-  return [
-    {
-      title:
-        "Sri Krishna Wooden Furniture — Premium Handcrafted Furniture | Dharmapuri",
-    },
-    {
-      name: "description",
-      content:
-        "Premium handcrafted teak, rosewood & custom furniture. Sofas, beds, dining sets, wardrobes, pooja temples & more. Call Manogaran: 8838233612",
-    },
-    {
-      name: "keywords",
-      content:
-        "wooden furniture Dharmapuri, teak furniture Dharmapuri, rosewood furniture, custom furniture Dharmapuri, furniture shop Dharmapuri, Sri Krishna Wooden Furniture",
-    },
-    {
-      name: "og:title",
-      content:
-        "Sri Krishna Wooden Furniture — Premium Handcrafted Furniture | Dharmapuri",
-    },
-    {
-      name: "og:description",
-      content:
-        "Premium handcrafted teak, rosewood & custom wooden furniture in Dharmapuri. Custom furniture builder, virtual room designer & wood library.",
-    },
-    {
-      name: "og:type",
-      content: "website",
-    },
-    {
-      name: "og:url",
-      content: "https://srikrishnawoodenfurniture.com/",
-    },
-    {
-      name: "og:image",
-      content: "https://srikrishnawoodenfurniture.com/og_default.png",
-    },
-    {
-      name: "twitter:card",
-      content: "summary_large_image",
-    },
-    {
-      name: "twitter:image",
-      content: "https://srikrishnawoodenfurniture.com/og_default.png",
-    },
-  ];
+  return getDefaultMeta();
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {

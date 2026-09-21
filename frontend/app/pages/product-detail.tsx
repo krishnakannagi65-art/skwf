@@ -2,13 +2,17 @@ import { useState } from "react";
 
 import { ArrowLeft, Check, MessageCircle, Phone, Ruler } from "lucide-react";
 
+import { useNavigate } from "react-router";
 import { EnquiryForm } from "~/components/EnquiryForm";
 import { ProductCard } from "~/components/ProductCard";
 import { useLanguage } from "~/context/LanguageContext";
 import bedProducts from "~/data/bed-data";
 import { t } from "~/i18n/translations";
-import { BUSINESS, telLink, whatsappLink } from "~/lib/constants";
-import { useNavigate } from "react-router";
+import {
+  BUSINESS,
+  generateTelLink,
+  generateWhatsappLink,
+} from "~/lib/constants";
 
 interface ProductDetailPageProps {
   slug: string;
@@ -226,7 +230,7 @@ Could you provide more details?`;
             <div className="flex flex-col gap-3 sm:flex-row">
               {/* WhatsApp */}
               <a
-                href={whatsappLink(waMessage)}
+                href={generateWhatsappLink(waMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 btn-gold"
@@ -237,7 +241,10 @@ Could you provide more details?`;
               </a>
 
               {/* Call */}
-              <a href={telLink()} className="flex-1 btn-secondary">
+              <a
+                href={generateTelLink(BUSINESS.contact.primaryPhone.number)}
+                className="flex-1 btn-secondary"
+              >
                 <Phone size={18} />
 
                 {t("call_now", lang)}

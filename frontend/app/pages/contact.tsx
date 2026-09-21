@@ -1,12 +1,16 @@
-import { Phone, MapPin, Clock, Mail, MessageCircle } from "lucide-react";
+import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { EnquiryForm } from "~/components/EnquiryForm";
 import { useLanguage } from "~/context/LanguageContext";
 import { t } from "~/i18n/translations";
-import { BUSINESS, telLink, whatsappLink } from "~/lib/constants";
-import { EnquiryForm } from "~/components/EnquiryForm";
+import {
+  BUSINESS,
+  generateTelLink,
+  generateWhatsappLink,
+} from "~/lib/constants";
 
 export function ContactPage() {
   const { lang } = useLanguage();
-  const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(BUSINESS.mapQuery)}&z=15&output=embed`;
+  const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(BUSINESS.location.mapQuery)}&z=15&output=embed`;
 
   return (
     <div className="min-h-screen">
@@ -37,16 +41,13 @@ export function ContactPage() {
                     {t("contact_address", lang)}
                   </h3>
                   <p className="text-sm text-wood-600">
-                    {BUSINESS.addressFull}
+                    {BUSINESS.location.addressFull}
                   </p>
                 </div>
               </div>
 
               {/* Phone */}
-              <a
-                href={telLink()}
-                className="card card-hover p-5 flex items-start gap-4"
-              >
+              <div className="card card-hover p-5 flex items-start gap-4">
                 <div className="w-12 h-12 bg-wood-100 rounded-xl flex items-center justify-center shrink-0">
                   <Phone size={22} className="text-wood-600" />
                 </div>
@@ -54,14 +55,20 @@ export function ContactPage() {
                   <h3 className="font-serif font-semibold text-wood-900 mb-1">
                     {t("contact_phone", lang)}
                   </h3>
-                  <p className="text-sm text-wood-600">
-                    {BUSINESS.phoneDisplay}
-                  </p>
+                  {BUSINESS.contact.displayPhones.map((phone) => (
+                    <a
+                      key={phone}
+                      href={generateTelLink(phone)}
+                      className="text-sm text-wood-600 block"
+                    >
+                      {phone}
+                    </a>
+                  ))}
                   <p className="text-xs text-wood-400 mt-1">
                     {lang === "ta" ? "உரிமையாளர்" : "Owner"}: {BUSINESS.owner}
                   </p>
                 </div>
-              </a>
+              </div>
 
               {/* Email */}
               <div className="card p-5 flex items-start gap-4">
@@ -72,7 +79,9 @@ export function ContactPage() {
                   <h3 className="font-serif font-semibold text-wood-900 mb-1">
                     {t("contact_email", lang)}
                   </h3>
-                  <p className="text-sm text-wood-600">{BUSINESS.email}</p>
+                  <p className="text-sm text-wood-600">
+                    {BUSINESS.contact.email}
+                  </p>
                 </div>
               </div>
 
@@ -85,18 +94,23 @@ export function ContactPage() {
                   <h3 className="font-serif font-semibold text-wood-900 mb-1">
                     {t("contact_hours", lang)}
                   </h3>
-                  <p className="text-sm text-wood-600">{BUSINESS.hours}</p>
+                  <p className="text-sm text-wood-600">
+                    {BUSINESS.hours.display}
+                  </p>
                 </div>
               </div>
             </div>
 
             {/* Quick actions */}
             <div className="flex flex-col sm:flex-row gap-3">
-              <a href={telLink()} className="btn-primary flex-1">
+              <a
+                href={generateTelLink(BUSINESS.contact.primaryPhone.display)}
+                className="btn-primary flex-1"
+              >
                 <Phone size={18} /> {t("call_now", lang)}
               </a>
               <a
-                href={whatsappLink(
+                href={generateWhatsappLink(
                   `Hello ${BUSINESS.name}, I'd like to know more about your furniture.`,
                 )}
                 target="_blank"

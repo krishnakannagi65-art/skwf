@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
 import { MessageCircle, X } from "lucide-react";
-import { BUSINESS, whatsappLink } from "~/lib/constants";
+import { useEffect, useState } from "react";
 import { useLanguage } from "~/context/LanguageContext";
 import { t } from "~/i18n/translations";
+import { BUSINESS, generateWhatsappLink } from "~/lib/constants";
 
 export function WhatsAppFloat() {
   const { lang } = useLanguage();
@@ -39,7 +39,7 @@ export function WhatsAppFloat() {
         </div>
       )}
       <a
-        href={whatsappLink(message)}
+        href={generateWhatsappLink(message)}
         target="_blank"
         rel="noopener noreferrer"
         className="w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg shadow-[#25D366]/30 hover:scale-110 active:scale-95 transition-all duration-300 animate-float"

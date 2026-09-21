@@ -1,3 +1,12 @@
+import {
+  ArrowRight,
+  Hammer,
+  Home as HomeIcon,
+  Phone,
+  Ruler,
+  Sparkles,
+} from "lucide-react";
+import { useNavigate } from "react-router";
 import { ProductCard, RatingStars } from "~/components/ProductCard";
 import { SectionHeader } from "~/components/SectionHeader";
 import { useLanguage } from "~/context/LanguageContext";
@@ -9,17 +18,12 @@ import {
   useWoodTypes,
 } from "~/hooks/useData";
 import { t } from "~/i18n/translations";
-import { BUSINESS, telLink, whatsappLink } from "~/lib/constants";
 import {
-  ArrowRight,
-  Hammer,
-  Home as HomeIcon,
-  Phone,
-  Ruler,
-  Sparkles,
-} from "lucide-react";
+  BUSINESS,
+  generateTelLink,
+  generateWhatsappLink,
+} from "~/lib/constants";
 import shopImage from "/shop.jpeg";
-import { useNavigate } from "react-router";
 
 const experienceCards = [
   {
@@ -123,16 +127,19 @@ export function HomePage() {
               className="flex items-center gap-6 mt-10 text-wood-300 animate-fade-in-up"
               style={{ animationDelay: "0.3s" }}
             >
-              <a
-                href={telLink()}
-                className="flex items-center gap-2 transition-colors hover:text-gold-400"
-              >
-                <Phone size={18} className="text-gold-400" />
-                <span className="font-medium">{BUSINESS.phoneDisplay}</span>
-              </a>
+              {BUSINESS.contact.displayPhones.map((phone) => (
+                <a
+                  key={phone}
+                  href={generateTelLink(phone)}
+                  className="flex items-center gap-2 transition-colors hover:text-gold-400"
+                >
+                  <Phone size={18} className="text-gold-400" />
+                  <span className="font-medium">{phone}</span>
+                </a>
+              ))}
               <span className="text-wood-500">|</span>
               <span className="text-sm">
-                {BUSINESS.city}, {BUSINESS.pincode}
+                {BUSINESS.location.city}, {BUSINESS.location.pincode}
               </span>
             </div>
           </div>
@@ -394,7 +401,7 @@ export function HomePage() {
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <a
-              href={whatsappLink(
+              href={generateWhatsappLink(
                 `Hello ${BUSINESS.name}, I'd like to discuss custom furniture.`,
               )}
               target="_blank"
@@ -403,12 +410,15 @@ export function HomePage() {
             >
               {t("whatsapp_us", lang)}
             </a>
-            <a
-              href={telLink()}
-              className="btn-secondary bg-white/10! border-white/30! text-white! hover:bg-white/20!"
-            >
-              <Phone size={18} /> {BUSINESS.phoneDisplay}
-            </a>
+            {BUSINESS.contact.displayPhones.map((phone) => (
+              <a
+                key={phone}
+                href={generateTelLink(phone)}
+                className="btn-secondary bg-white/10! border-white/30! text-white! hover:bg-white/20!"
+              >
+                <Phone size={18} /> {phone}
+              </a>
+            ))}
           </div>
         </div>
       </section>
