@@ -84,7 +84,7 @@ export interface Enquiry {
 export type Language = "en" | "ta";
 
 export type Route =
-  | { name: "home" }
+  | { name: "/" }
   | { name: "showroom" }
   | { name: "product"; slug: string }
   | { name: "custom-builder" }

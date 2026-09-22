@@ -12,7 +12,7 @@ const navItems: {
   route: Route;
   key: keyof typeof import("~/i18n/translations").translations;
 }[] = [
-  { route: { name: "home" }, key: "nav_home" },
+  { route: { name: "/" }, key: "nav_home" },
   { route: { name: "showroom" }, key: "nav_showroom" },
   { route: { name: "custom-builder" }, key: "nav_custom" },
   { route: { name: "room-designer" }, key: "nav_room" },
