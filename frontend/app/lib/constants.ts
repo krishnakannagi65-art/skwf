@@ -17,11 +17,13 @@ export const BUSINESS = {
     primaryPhone: {
       countryCode: "+91",
       number: primaryPhone,
+      raw: getRawPhoneNumber(primaryPhone),
       display: formatPhoneNumber(primaryPhone),
     },
     secondaryPhone: {
       countryCode: "+91",
       number: secondaryPhone,
+      raw: getRawPhoneNumber(secondaryPhone),
       display: formatPhoneNumber(secondaryPhone),
     },
     displayPhones: [
@@ -69,7 +71,7 @@ export function generateWhatsappLink(message: string): string {
   return `https://wa.me/${BUSINESS.contact.whatsapp}?text=${encoded}`;
 }
 
-export function getRawPhoneNumbers(phone: string) {
+export function getRawPhoneNumber(phone: string) {
   // Remove any non-digit characters from the phone number
   phone = phone.replace(/\D/g, "");
   // Ensure the phone number starts with the country code (for India, it's +91)
@@ -80,12 +82,12 @@ export function getRawPhoneNumbers(phone: string) {
 }
 
 export function generateTelLink(phone: string): string {
-  phone = getRawPhoneNumbers(phone);
+  phone = getRawPhoneNumber(phone);
   return `tel:${phone}`;
 }
 
 export function formatPhoneNumber(phone: string): string {
-  phone = getRawPhoneNumbers(phone);
+  phone = getRawPhoneNumber(phone);
   // ensure the phone number is 13 digits long (including the country code)
   if (phone.length !== 13) {
     throw new Error(
