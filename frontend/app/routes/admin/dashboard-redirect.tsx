@@ -5,3 +5,7 @@ export async function clientLoader() {
   // This helps browsers and SEO bots update their links.
   return redirect("/admin/dashboard", 301);
 }
+
+export default function AdminDashboardRedirect() {
+  return null;
+}

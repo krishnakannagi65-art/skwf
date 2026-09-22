@@ -23,3 +23,7 @@ export async function clientAction() {
 
   return redirect("/admin/login");
 }
+
+export default function AdminLogout() {
+  return null;
+}
