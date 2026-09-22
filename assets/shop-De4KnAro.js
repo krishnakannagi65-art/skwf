@@ -1,0 +1,1 @@
+var e=`/shop.jpeg`;export{e as t};

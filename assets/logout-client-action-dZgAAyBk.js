@@ -1,0 +1,1 @@
+import{E as e}from"./utils-ClvgYzxi.js";import{t}from"./supabase-CbwXZqab.js";async function n(){let{error:n}=await t.auth.signOut();return n&&console.error(`Logout error:`,n),e(`/admin/login`)}export{n as clientAction};

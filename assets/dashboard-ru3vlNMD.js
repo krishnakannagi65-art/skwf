@@ -1,0 +1,1 @@
+import{o as e,t}from"./jsx-runtime-Cose4Zfq.js";var n=t(),r=e(function(){return(0,n.jsx)(`div`,{children:`Dashboard`})});export{r as default};
