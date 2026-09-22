@@ -1,8 +1,9 @@
 import { TreeDeciduous } from "lucide-react";
+import { Link } from "react-router";
+
 import { useLanguage } from "~/context/LanguageContext";
-import { t } from "~/i18n/translations";
 import { useWoodTypes } from "~/hooks/useData";
-import { useNavigate } from "react-router";
+import { t } from "~/i18n/translations";
 
 const tierColors: Record<string, string> = {
   premium: "bg-gold-100 text-gold-800",
@@ -11,7 +12,6 @@ const tierColors: Record<string, string> = {
 };
 
 export function WoodLibraryPage() {
-  const navigate = useNavigate();
   const { lang } = useLanguage();
   const { woodTypes, loading } = useWoodTypes();
 
@@ -119,14 +119,11 @@ export function WoodLibraryPage() {
                       </div>
                     </div>
 
-                    <button
-                      onClick={() => navigate("/custom-builder")}
-                      className="btn-primary mt-6"
-                    >
+                    <Link to="/custom-builder" className="btn-primary mt-6">
                       {lang === "ta"
                         ? "இந்த மரத்தில் தளபாடம் வடிவமைக்க"
                         : `Build with ${wood.name}`}
-                    </button>
+                    </Link>
                   </div>
                 </div>
               );

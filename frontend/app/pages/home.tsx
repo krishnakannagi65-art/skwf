@@ -6,23 +6,20 @@ import {
   Ruler,
   Sparkles,
 } from "lucide-react";
-import { useNavigate } from "react-router";
+import { Link } from "react-router";
+
 import { ProductCard, RatingStars } from "~/components/ProductCard";
 import { SectionHeader } from "~/components/SectionHeader";
 import { useLanguage } from "~/context/LanguageContext";
 import bedProducts from "~/data/bed-data";
-import {
-  useCategories,
-  useProducts,
-  useTestimonials,
-  useWoodTypes,
-} from "~/hooks/useData";
+import { useCategories, useTestimonials, useWoodTypes } from "~/hooks/useData";
 import { t } from "~/i18n/translations";
 import {
   BUSINESS,
   generateTelLink,
   generateWhatsappLink,
 } from "~/lib/constants";
+
 import shopImage from "/shop.jpeg";
 
 const experienceCards = [
@@ -51,11 +48,10 @@ const experienceCards = [
 
 export function HomePage() {
   const { lang } = useLanguage();
-  const { products, loading } = useProducts({ featured: true });
+  // const { products, loading } = useProducts({ featured: true });
   const { categories } = useCategories();
   const { woodTypes } = useWoodTypes();
   const { testimonials } = useTestimonials();
-  const navigate = useNavigate();
 
   const iconMap: Record<string, typeof Hammer> = {
     Sofa: Hammer,
@@ -107,19 +103,16 @@ export function HomePage() {
               className="flex flex-col gap-4 mt-8 sm:flex-row animate-fade-in-up"
               style={{ animationDelay: "0.2s" }}
             >
-              <button
-                onClick={() => navigate("/showroom")}
-                className="btn-gold"
-              >
+              <Link to="/showroom" className="btn-gold">
                 {t("hero_cta1", lang)}
                 <ArrowRight size={18} />
-              </button>
-              <button
-                onClick={() => navigate("/custom-builder")}
+              </Link>
+              <Link
+                to="/custom-builder"
                 className="btn-secondary bg-white/10! border-white/30! text-white! hover:bg-white/20!"
               >
                 {t("hero_cta2", lang)}
-              </button>
+              </Link>
             </div>
 
             {/* Quick contact */}
@@ -181,9 +174,9 @@ export function HomePage() {
           {experienceCards.map((card) => {
             const Icon = card.icon;
             return (
-              <button
+              <Link
                 key={card.key}
-                onClick={() => navigate(card.path)}
+                to={card.path}
                 className="flex flex-col p-6 text-left card card-hover group"
               >
                 <div
@@ -204,41 +197,35 @@ export function HomePage() {
                     className="transition-transform group-hover:translate-x-1"
                   />
                 </span>
-              </button>
+              </Link>
             );
           })}
         </div>
       </section>
-      {/* Featured Products */}{" "}
+      {/* Featured Products */}
       <section className="py-20 bg-wood-50">
-        {" "}
         <div className="px-6 mx-auto max-w-7xl">
-          {" "}
           <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
-            {" "}
             <div>
-              {" "}
               <SectionHeader
                 title={t("featured_title", lang)}
                 subtitle={t("featured_subtitle", lang)}
-              />{" "}
-            </div>{" "}
-            <button onClick={() => navigate("/showroom")} className="btn-ghost">
-              {" "}
-              {t("view_all", lang)} <ArrowRight size={16} />{" "}
-            </button>{" "}
-          </div>{" "}
+              />
+            </div>
+            <Link to="/showroom" className="btn-ghost">
+              {t("view_all", lang)} <ArrowRight size={16} />
+            </Link>
+          </div>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {" "}
             {bedProducts.slice(0, 8).map((product) => (
               <ProductCard
                 key={product.id}
                 product={product}
                 imageUrl={product.image_url}
               />
-            ))}{" "}
-          </div>{" "}
-        </div>{" "}
+            ))}
+          </div>
+        </div>
       </section>
       {/* Categories */}
       <section className="px-6 py-20 mx-auto max-w-7xl">
@@ -252,9 +239,9 @@ export function HomePage() {
             const Icon = iconMap[cat.icon] || Hammer;
             const name = lang === "ta" && cat.name_ta ? cat.name_ta : cat.name;
             return (
-              <button
+              <Link
                 key={cat.id}
-                onClick={() => navigate("/showroom")}
+                to="/showroom"
                 className="flex flex-col items-center p-6 text-center card card-hover group"
               >
                 <div className="flex items-center justify-center w-16 h-16 mb-3 transition-colors rounded-2xl bg-wood-100 group-hover:bg-wood-700">
@@ -266,7 +253,7 @@ export function HomePage() {
                 <h3 className="font-serif text-sm font-semibold text-wood-900">
                   {name}
                 </h3>
-              </button>
+              </Link>
             );
           })}
         </div>
@@ -289,9 +276,9 @@ export function HomePage() {
             />
             <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
               {woodTypes.map((wood) => (
-                <button
+                <Link
                   key={wood.id}
-                  onClick={() => navigate("/wood-library")}
+                  to="/wood-library"
                   className="relative overflow-hidden group aspect-square rounded-xl"
                 >
                   <img
@@ -308,16 +295,13 @@ export function HomePage() {
                       {wood.price_tier}
                     </p>
                   </div>
-                </button>
+                </Link>
               ))}
             </div>
             <div className="mt-8 text-center">
-              <button
-                onClick={() => navigate("/wood-library")}
-                className="btn-gold"
-              >
+              <Link to="/wood-library" className="btn-gold">
                 {t("view_all", lang)} <ArrowRight size={18} />
-              </button>
+              </Link>
             </div>
           </div>
         </section>
@@ -349,9 +333,9 @@ export function HomePage() {
             <p className="mb-6 leading-relaxed text-wood-600">
               {t("about_p3", lang)}
             </p>
-            <button onClick={() => navigate("/about")} className="btn-primary">
+            <Link to="/about" className="btn-primary">
               {t("nav_about", lang)} <ArrowRight size={18} />
-            </button>
+            </Link>
           </div>
         </div>
       </section>

@@ -1,5 +1,6 @@
 import { ArrowRight, Award, Hammer, Heart, TreeDeciduous } from "lucide-react";
-import { useNavigate } from "react-router";
+import { Link } from "react-router";
+
 import { RatingStars } from "~/components/ProductCard";
 import { useLanguage } from "~/context/LanguageContext";
 import { useTestimonials } from "~/hooks/useData";
@@ -14,7 +15,6 @@ import shopImage from "/shop.jpeg";
 export function AboutPage() {
   const { lang } = useLanguage();
   const { testimonials } = useTestimonials();
-  const navigate = useNavigate();
 
   const values = [
     {
@@ -178,10 +178,10 @@ export function AboutPage() {
             </p>
 
             <a
-              href="tel:9842250210"
+              href={`tel:${BUSINESS.contact.secondaryPhone.raw}`}
               className="inline-flex items-center gap-2 mt-6 btn-primary"
             >
-              Call Us: 9842250210
+              Call Us: {BUSINESS.contact.secondaryPhone.display}
             </a>
           </div>
         </div>
@@ -368,15 +368,12 @@ export function AboutPage() {
           {BUSINESS.location.addressFull}
         </p>
         <div className="flex flex-col justify-center gap-4 sm:flex-row">
-          <button onClick={() => navigate("/showroom")} className="btn-primary">
+          <Link to="/showroom" className="btn-primary">
             {t("nav_showroom", lang)} <ArrowRight size={18} />
-          </button>
-          <button
-            onClick={() => navigate("/contact")}
-            className="btn-secondary"
-          >
+          </Link>
+          <Link to="/contact" className="btn-secondary">
             {t("nav_contact", lang)}
-          </button>
+          </Link>
         </div>
       </section>
     </div>

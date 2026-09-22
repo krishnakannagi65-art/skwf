@@ -1,9 +1,11 @@
 import { Globe, Menu, Phone, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router";
+import { Link, NavLink, useLocation } from "react-router";
+
 import { useLanguage } from "~/context/LanguageContext";
 import { t } from "~/i18n/translations";
 import { BUSINESS, generateTelLink } from "~/lib/constants";
+
 import type { Route } from "~/types";
 
 const navItems: {
@@ -23,7 +25,6 @@ const navItems: {
 
 export function Header() {
   const location = useLocation();
-  const navigate = useNavigate();
   const { lang, toggleLang } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -37,22 +38,6 @@ export function Header() {
   useEffect(() => {
     setMenuOpen(false);
   }, [location]);
-
-  const isActive = (item: Route): boolean => {
-    if (item.name === "home" && location.pathname === "/") return true;
-    if (item.name !== "home" && location.pathname === `/${item.name}`)
-      return true;
-    return false;
-  };
-
-  const go = (r: Route) => {
-    const path =
-      r.name === "home"
-        ? "/"
-        : `/${r.name === "product" ? "product/" + (r as { slug: string }).slug : r.name}`;
-    navigate(path);
-    setMenuOpen(false);
-  };
 
   return (
     <>
@@ -94,10 +79,7 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <button
-              onClick={() => go({ name: "home" })}
-              className="flex items-center gap-3 group"
-            >
+            <Link to="/" className="flex items-center gap-3 group">
               <div className="w-11 h-11 md:w-12 md:h-12 rounded-lg wood-gradient flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
                 <span className="font-serif text-gold-400 text-xl md:text-2xl font-bold">
                   SK
@@ -111,22 +93,24 @@ export function Header() {
                   Wooden Furniture
                 </p>
               </div>
-            </button>
+            </Link>
 
             {/* Desktop nav */}
             <nav className="hidden lg:flex items-center gap-1">
               {navItems.map((item) => (
-                <button
+                <NavLink
                   key={item.key}
-                  onClick={() => go(item.route)}
-                  className={`px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
-                    isActive(item.route)
-                      ? "text-wood-800 bg-wood-200/60"
-                      : "text-wood-600 hover:text-wood-800 hover:bg-wood-100"
-                  }`}
+                  to={`/${item.route.name}`}
+                  className={({ isActive }) =>
+                    `px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                      isActive
+                        ? "text-wood-800 bg-wood-200/60"
+                        : "text-wood-600 hover:text-wood-800 hover:bg-wood-100"
+                    }`
+                  }
                 >
                   {t(item.key, lang)}
-                </button>
+                </NavLink>
               ))}
             </nav>
 
@@ -161,17 +145,19 @@ export function Header() {
           <div className="lg:hidden glass border-t border-wood-200 animate-fade-in-down">
             <nav className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1 max-h-[calc(100vh-5rem)] overflow-y-auto">
               {navItems.map((item) => (
-                <button
+                <NavLink
                   key={item.key}
-                  onClick={() => go(item.route)}
-                  className={`px-4 py-3 text-left text-sm font-medium rounded-lg transition-all ${
-                    isActive(item.route)
-                      ? "text-wood-800 bg-wood-200/60"
-                      : "text-wood-600 hover:bg-wood-100"
-                  }`}
+                  to={`/${item.route.name}`}
+                  className={({ isActive }) =>
+                    `px-4 py-3 text-left text-sm font-medium rounded-lg transition-all ${
+                      isActive
+                        ? "text-wood-800 bg-wood-200/60"
+                        : "text-wood-600 hover:bg-wood-100"
+                    }`
+                  }
                 >
                   {t(item.key, lang)}
-                </button>
+                </NavLink>
               ))}
               {BUSINESS.contact.displayPhones.map((phone) => (
                 <a
