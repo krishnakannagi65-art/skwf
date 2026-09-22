@@ -73,7 +73,7 @@ export function generateWhatsappLink(message: string): string {
 
 export function getRawPhoneNumber(phone: string) {
   // Remove any non-digit characters from the phone number
-  phone = phone.replace(/\D/g, "");
+  phone = phone.replace(/(?!^\+)\D/g, "");
   // Ensure the phone number starts with the country code (for India, it's +91)
   if (!phone.startsWith("+91")) {
     phone = "+91" + phone;
