@@ -1,17 +1,17 @@
-import { useLanguage } from "~/context/LanguageContext";
 import { Star } from "lucide-react";
+import { Link } from "react-router";
 
+import { useLanguage } from "~/context/LanguageContext";
 import type { Product, WoodType } from "~/types";
-import { useNavigate } from "react-router";
 
 interface ProductCardProps {
   product: Product;
   woodType?: WoodType;
   imageUrl?: string;
 }
+
 export function ProductCard({ product, woodType, imageUrl }: ProductCardProps) {
   const { lang } = useLanguage();
-  const navigate = useNavigate();
 
   const name =
     lang === "ta" && product.name_ta ? product.name_ta : product.name;
@@ -30,8 +30,8 @@ export function ProductCard({ product, woodType, imageUrl }: ProductCardProps) {
   };
 
   return (
-    <button
-      onClick={() => navigate(`/product/${product.slug}`)}
+    <Link
+      to={`/product/${product.slug}`}
       className="flex flex-col text-left card card-hover group"
     >
       {/* Image */}
@@ -88,7 +88,7 @@ export function ProductCard({ product, woodType, imageUrl }: ProductCardProps) {
           </span>
         </div>
       </div>
-    </button>
+    </Link>
   );
 }
 

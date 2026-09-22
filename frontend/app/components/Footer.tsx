@@ -1,5 +1,5 @@
 import { Clock, Mail, MapPin, MessageCircle } from "lucide-react";
-import { useNavigate } from "react-router";
+import { Link } from "react-router";
 import { FacebookIcon } from "~/assets/icons/facebook";
 import { InstagramIcon } from "~/assets/icons/instagram";
 import { useLanguage } from "~/context/LanguageContext";
@@ -12,7 +12,6 @@ import {
 
 export function Footer() {
   const { lang } = useLanguage();
-  const navigate = useNavigate();
 
   const quickLinks = [
     { label: t("nav_showroom", lang), path: "/showroom" },
@@ -84,12 +83,12 @@ export function Footer() {
             <ul className="space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.path}>
-                  <button
-                    onClick={() => navigate(link.path)}
+                  <Link
+                    to={link.path}
                     className="text-sm transition-colors text-wood-400 hover:text-gold-400"
                   >
                     {link.label}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>

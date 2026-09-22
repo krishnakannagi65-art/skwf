@@ -1,8 +1,7 @@
-import { useState } from "react";
-
 import { ArrowLeft, Check, MessageCircle, Phone, Ruler } from "lucide-react";
+import { useState } from "react";
+import { Link } from "react-router";
 
-import { useNavigate } from "react-router";
 import { EnquiryForm } from "~/components/EnquiryForm";
 import { ProductCard } from "~/components/ProductCard";
 import { useLanguage } from "~/context/LanguageContext";
@@ -20,7 +19,6 @@ interface ProductDetailPageProps {
 
 export function ProductDetailPage({ slug }: ProductDetailPageProps) {
   const { lang } = useLanguage();
-  const navigate = useNavigate();
 
   const [activeImage, setActiveImage] = useState(0);
   const [showEnquiry, setShowEnquiry] = useState(false);
@@ -40,13 +38,9 @@ export function ProductDetailPage({ slug }: ProductDetailPageProps) {
         <div className="text-center">
           <p className="mb-4 text-lg text-wood-400">{t("no_results", lang)}</p>
 
-          <button
-            type="button"
-            onClick={() => navigate("/showroom")}
-            className="btn-primary"
-          >
+          <Link type="button" className="btn-primary" to="/showroom">
             {t("nav_showroom", lang)}
-          </button>
+          </Link>
         </div>
       </div>
     );
@@ -109,15 +103,15 @@ Could you provide more details?`;
     <div className="min-h-screen">
       <div className="px-6 py-8 mx-auto max-w-7xl">
         {/* Back to Showroom */}
-        <button
+        <Link
           type="button"
-          onClick={() => navigate("/showroom")}
+          to="/showroom"
           className="flex items-center gap-2 mb-6 text-sm transition-colors text-wood-500 hover:text-wood-700"
         >
           <ArrowLeft size={16} />
 
           {t("nav_showroom", lang)}
-        </button>
+        </Link>
 
         {/* Product */}
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
