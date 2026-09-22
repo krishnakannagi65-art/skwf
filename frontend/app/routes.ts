@@ -2,6 +2,7 @@ import {
   type RouteConfig,
   index,
   layout,
+  prefix,
   route,
 } from "@react-router/dev/routes";
 
@@ -22,14 +23,16 @@ export default [
   ]),
 
   // Admin routes
-  route("admin/login", "routes/admin/login.tsx"),
-  route("admin/logout", "routes/admin/logout.tsx"),
+  ...prefix("admin", [
+    route("login", "routes/admin/login.tsx"),
+    route("logout", "routes/admin/logout.tsx"),
 
-  layout("layouts/admin.tsx", [
-    route("admin", "routes/admin/dashboard-redirect.tsx"),
-    route("admin/dashboard", "routes/admin/dashboard.tsx"),
-    // route("admin/products/list", "routes/admin/products.tsx"),
-    // route("admin/products/new", "routes/admin/product-new.tsx"),
-    // route("admin/products/:id/edit", "routes/admin/product-edit.tsx"),
+    layout("layouts/admin.tsx", [
+      index("routes/admin/dashboard-redirect.tsx"),
+      route("dashboard", "routes/admin/dashboard.tsx"),
+      // route("products/list", "routes/admin/products.tsx"),
+      // route("products/new", "routes/admin/product-new.tsx"),
+      // route("products/:id/edit", "routes/admin/product-edit.tsx"),
+    ]),
   ]),
 ] satisfies RouteConfig;
