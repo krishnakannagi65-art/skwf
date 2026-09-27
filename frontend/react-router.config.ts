@@ -1,11 +1,12 @@
 import type { Config } from "@react-router/dev/config";
-import products from "./app/data/bed-data";
+import { getProducts } from "./app/models/product";
 export default {
   // Config options...
   // Server-side render by default, to enable SPA mode set this to `false`
   ssr: false,
 
   async prerender({ getStaticPaths }) {
+    const products = await getProducts();
     const dynamicPaths = products.map(
       (product: any) => `/product/${product.slug}`,
     );
