@@ -1,0 +1,1 @@
+import{t as e}from"./product-CPZykYXz.js";async function t({params:t}){let{slug:n}=t;try{let t=await e(n);if(!t)throw new Response(`Product Not Found`,{status:404});return{product:t}}catch{throw new Response(`Product Not Found`,{status:404})}}export{t as clientLoader};

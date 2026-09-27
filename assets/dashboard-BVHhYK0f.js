@@ -1,0 +1,1 @@
+import{a as e}from"./components-CQY3asfK.js";import{t}from"./jsx-runtime-IICjP95_.js";var n=t(),r=e(function(){return(0,n.jsx)(`div`,{children:`Dashboard`})});export{r as default};

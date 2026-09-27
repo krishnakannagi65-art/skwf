@@ -1,0 +1,1 @@
+import{t as e}from"./supabase-CbwXZqab.js";async function t(){let{data:t,error:n}=await e.from(`products`).select(`*`).order(`display_order`,{ascending:!0});if(n)throw Error(n.message);return t}async function n(t){let{data:n,error:r}=await e.from(`products`).select(`*`).eq(`slug`,t).single();if(r)throw Error(r.message);return n}export{t as n,n as t};

@@ -1,0 +1,1 @@
+import{E as e}from"./utils-ClvgYzxi.js";import{t}from"./supabase-CbwXZqab.js";async function n({request:n}){let r=await n.formData(),i=String(r.get(`email`)),a=String(r.get(`password`)),{error:o}=await t.auth.signInWithPassword({email:i,password:a});return o?{error:o.message}:e(`/admin`)}export{n as clientAction};

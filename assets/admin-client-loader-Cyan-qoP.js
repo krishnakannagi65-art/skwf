@@ -1,0 +1,1 @@
+import{E as e}from"./utils-ClvgYzxi.js";import{t}from"./supabase-CbwXZqab.js";async function n({request:n}){let{data:{session:r}}=await t.auth.getSession();return r?{email:r.user.email}:e(`/admin/login`)}export{n as clientLoader};

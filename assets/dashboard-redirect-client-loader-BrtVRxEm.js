@@ -1,0 +1,1 @@
+import{E as e}from"./utils-ClvgYzxi.js";async function t(){return e(`/admin/dashboard`,301)}export{t as clientLoader};

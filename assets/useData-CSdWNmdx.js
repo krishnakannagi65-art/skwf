@@ -1,0 +1,1 @@
+function e(){return{categories:[],loading:!1}}function t(){return{woodTypes:[],loading:!1}}function n(){return{projects:[],loading:!1}}function r(){return{testimonials:[],loading:!1}}export{t as i,n,r,e as t};
