@@ -16,6 +16,5 @@ export async function loader({}: Route.LoaderArgs) {
 
 export default function Home() {
   const { products } = useLoaderData<typeof loader>();
-
   return <HomePage featuredProducts={products} />;
 }

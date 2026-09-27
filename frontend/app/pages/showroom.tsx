@@ -1,16 +1,16 @@
 import { Search, SlidersHorizontal, X } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { ProductCard, ProductCardSkeleton } from "~/components/ProductCard";
 import { useLanguage } from "~/context/LanguageContext";
-import bedProducts from "~/data/bed-data";
-import { useCategories, useProducts, useWoodTypes } from "~/hooks/useData";
+import { useCategories, useWoodTypes } from "~/hooks/useData";
 import { t } from "~/i18n/translations";
+import { getProducts } from "~/models/product";
+import type { Product } from "~/types";
 
 export function ShowroomPage() {
   const { lang } = useLanguage();
 
-  const { products, loading } = useProducts();
   const { categories } = useCategories();
   const { woodTypes } = useWoodTypes();
 
@@ -18,6 +18,14 @@ export function ShowroomPage() {
   const [selectedCat, setSelectedCat] = useState<string>("");
   const [selectedWood, setSelectedWood] = useState<string>("");
   const [showFilters, setShowFilters] = useState(false);
+  const [products, setProducts] = useState([] as Product[]);
+  const loading = products.length === 0;
+
+  useEffect(() => {
+    getProducts().then((data) => {
+      setProducts(data);
+    });
+  }, []);
 
   // =========================
   // Filter Products
@@ -241,7 +249,7 @@ export function ShowroomPage() {
                  Product Cards
               ========================= */
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {bedProducts.map((product) => (
+                {products.map((product) => (
                   <ProductCard
                     key={product.id}
                     product={product}

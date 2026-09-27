@@ -8,9 +8,9 @@ import {
 import { useState } from "react";
 import { ProductCard } from "~/components/ProductCard";
 import { useLanguage } from "~/context/LanguageContext";
-import { useProducts } from "~/hooks/useData";
 import { t } from "~/i18n/translations";
 import { BUSINESS, generateWhatsappLink } from "~/lib/constants";
+import type { Product } from "~/types";
 
 const roomTypes = [
   {
@@ -39,9 +39,8 @@ const roomTypes = [
   },
 ];
 
-export function RoomDesignerPage() {
+export function RoomDesignerPage({ products }: { products: Product[] }) {
   const { lang } = useLanguage();
-  const { products } = useProducts();
   const [selectedRoom, setSelectedRoom] = useState<string>("");
   const [selectedCombo, setSelectedCombo] = useState<string[]>([]);
 

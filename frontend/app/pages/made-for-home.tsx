@@ -1,10 +1,12 @@
 import { ArrowRight, Ruler, Sparkles } from "lucide-react";
 import { useState } from "react";
+
 import { ProductCard } from "~/components/ProductCard";
 import { useLanguage } from "~/context/LanguageContext";
-import { useProducts } from "~/hooks/useData";
 import { t } from "~/i18n/translations";
 import { BUSINESS, generateWhatsappLink } from "~/lib/constants";
+
+import type { Product } from "~/types";
 
 const roomTypes = [
   {
@@ -66,9 +68,8 @@ const budgetRanges = [
   },
 ];
 
-export function MadeForHomePage() {
+export function MadeForHomePage({ products }: { products: Product[] }) {
   const { lang } = useLanguage();
-  const { products } = useProducts();
   const [roomType, setRoomType] = useState("");
   const [length, setLength] = useState("");
   const [width, setWidth] = useState("");
@@ -82,7 +83,10 @@ export function MadeForHomePage() {
     .filter((p) => {
       if (room && p.category?.slug !== room.catSlug) return false;
       if (budgetRange) {
-        if (p.price_max < budgetRange.min || p.price_min > budgetRange.max)
+        if (
+          (p.price_max && p.price_max < budgetRange.min) ||
+          p.price_min > budgetRange.max
+        )
           return false;
       }
       return true;
