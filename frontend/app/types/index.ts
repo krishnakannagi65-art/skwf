@@ -25,25 +25,42 @@ export interface WoodType {
   display_order: number;
 }
 
+export type ProductStatus = "draft" | "active" | "archived";
+
 export interface Product {
   id: string;
+  created_at?: string;
+  updated_at?: string;
+
+  // Core Identifiers
+  sku?: string;
+  slug: string;
+
+  // Content & i18n
   name: string;
   name_ta: string;
-  slug: string;
   description: string;
   description_ta: string;
+
+  // Pricing (Decimals)
   price_min: number;
-  price_max: number;
-  category_id: string | null;
-  wood_type_id: string | null;
-  image_url: string;
+  price_max: number | null; // Nullable if the product has a fixed, single price
+
+  // Taxonomy
+  category_id: string | null; // Ready for a future 'categories' table foreign key
+  wood_type?: string[] | null; // Array to support products made of mixed woods
+
+  // Media
+  image_url: string | null;
   gallery_images: string[];
-  dimensions: string;
+
+  // Configuration
+  status?: ProductStatus;
   is_featured: boolean;
   is_customizable: boolean;
   display_order: number;
-  category?: Category;
-  wood_type?: WoodType;
+
+  dimensions: string;
 }
 
 export interface Project {
