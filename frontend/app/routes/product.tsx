@@ -1,6 +1,28 @@
 import { useLoaderData } from "react-router";
+import { mergeMeta } from "~/lib/utils";
 import { getProductBySlug } from "~/models/product";
 import { ProductDetailPage } from "~/pages/product-detail";
+
+import type { Route } from "./+types/product";
+
+export function meta({ matches }: Route.MetaArgs) {
+  return mergeMeta(matches, [
+    { title: "Product Details — SKWF | Showroom & Workshop" },
+    {
+      name: "description",
+      content: "Product details by SKWF Showroom & Workshop",
+    },
+    { name: "keywords", content: "SKWF, Showroom, Workshop, Product Details" },
+    {
+      name: "og:title",
+      content: "Product Details — SKWF | Showroom & Workshop",
+    },
+    {
+      name: "og:description",
+      content: "Product details by SKWF Showroom & Workshop",
+    },
+  ]);
+}
 
 export async function clientLoader({ params }: { params: { slug: string } }) {
   const { slug } = params;

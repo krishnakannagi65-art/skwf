@@ -4,7 +4,7 @@ import { HomePage } from "~/pages/home";
 
 import type { Route } from "./+types/home";
 
-export async function loader({}: Route.LoaderArgs) {
+export async function clientLoader({}: Route.LoaderArgs) {
   const products = await getFeaturedProducts();
 
   if (!products) {
@@ -15,6 +15,6 @@ export async function loader({}: Route.LoaderArgs) {
 }
 
 export default function Home() {
-  const { products } = useLoaderData<typeof loader>();
+  const { products } = useLoaderData<typeof clientLoader>();
   return <HomePage featuredProducts={products} />;
 }
