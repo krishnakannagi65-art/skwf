@@ -11,7 +11,6 @@ import { Link } from "react-router";
 import { ProductCard, RatingStars } from "~/components/ProductCard";
 import { SectionHeader } from "~/components/SectionHeader";
 import { useLanguage } from "~/context/LanguageContext";
-import bedProducts from "~/data/bed-data";
 import { useCategories, useTestimonials, useWoodTypes } from "~/hooks/useData";
 import { t } from "~/i18n/translations";
 import {
@@ -20,6 +19,7 @@ import {
   generateWhatsappLink,
 } from "~/lib/constants";
 
+import type { Product } from "~/types";
 import shopImage from "/shop.jpeg";
 
 const experienceCards = [
@@ -46,9 +46,10 @@ const experienceCards = [
   },
 ];
 
-export function HomePage() {
+export function HomePage(props: { featuredProducts: Product[] }) {
+  const { featuredProducts } = props;
   const { lang } = useLanguage();
-  // const { products, loading } = useProducts({ featured: true });
+
   const { categories } = useCategories();
   const { woodTypes } = useWoodTypes();
   const { testimonials } = useTestimonials();
@@ -217,11 +218,11 @@ export function HomePage() {
             </Link>
           </div>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {bedProducts.slice(0, 8).map((product) => (
+            {featuredProducts.slice(0, 8).map((product) => (
               <ProductCard
                 key={product.id}
                 product={product}
-                imageUrl={product.image_url}
+                imageUrl={product.image_url!}
               />
             ))}
           </div>

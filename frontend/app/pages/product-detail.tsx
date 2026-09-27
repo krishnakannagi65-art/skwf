@@ -5,7 +5,6 @@ import { Link } from "react-router";
 import { EnquiryForm } from "~/components/EnquiryForm";
 import { ProductCard } from "~/components/ProductCard";
 import { useLanguage } from "~/context/LanguageContext";
-import bedProducts from "~/data/bed-data";
 import { t } from "~/i18n/translations";
 import {
   BUSINESS,
@@ -13,21 +12,17 @@ import {
   generateWhatsappLink,
 } from "~/lib/constants";
 
+import type { Product } from "~/types";
+
 interface ProductDetailPageProps {
-  slug: string;
+  product: Product;
 }
 
-export function ProductDetailPage({ slug }: ProductDetailPageProps) {
+export function ProductDetailPage({ product }: ProductDetailPageProps) {
   const { lang } = useLanguage();
 
   const [activeImage, setActiveImage] = useState(0);
   const [showEnquiry, setShowEnquiry] = useState(false);
-
-  /*
-   * Find the product directly from bed-data.ts
-   * using the slug from the URL.
-   */
-  const product = bedProducts.find((item) => item.slug === slug);
 
   /*
    * Product not found
@@ -78,9 +73,10 @@ export function ProductDetailPage({ slug }: ProductDetailPageProps) {
   /*
    * Related products
    */
-  const relatedProducts = bedProducts
-    .filter((item) => item.id !== product.id)
-    .slice(0, 4);
+  const relatedProducts = [] as Product[]; // TODO: Fetch related products based on category or other criteria
+  // bedProducts
+  //   .filter((item) => item.id !== product.id)
+  //   .slice(0, 4);
 
   /*
    * WhatsApp message
@@ -91,9 +87,14 @@ I'm interested in:
 
 *${name}*
 
-Price Range: ${formatPrice(product.price_min)} - ${formatPrice(
-    product.price_max,
-  )}
+Price Range: ${(() => {
+    if (product.price_max && product.price_max > product.price_min) {
+      return `${formatPrice(product.price_min)} - ${formatPrice(
+        product.price_max,
+      )}`;
+    }
+    return formatPrice(product.price_min);
+  })()}
 
 Dimensions: ${product.dimensions}
 
@@ -171,7 +172,7 @@ Could you provide more details?`;
               <p className="font-serif text-2xl font-bold text-wood-900">
                 {formatPrice(product.price_min)}
 
-                {product.price_max > product.price_min && (
+                {product.price_max && product.price_max > product.price_min && (
                   <span className="text-base font-normal text-wood-400">
                     {" "}
                     - {formatPrice(product.price_max)}
